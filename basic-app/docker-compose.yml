@@ -1,0 +1,30 @@
+version: "3.9"
+services:
+  hello-world:
+    image: hello-world
+    container_name: hello-world
+    networks:
+     - hello-world_network
+    ports:
+     - "8080:8080"
+     - "9464:9464"
+  zipkin:
+    image: openzipkin/zipkin
+    container_name: zipkin
+    networks:
+     - hello-world_network
+    ports:
+     - "9411:9411"
+  prometheus:
+    image: prom/prometheus
+    container_name: prometheus
+    volumes:
+     - "./metrics/prometheus.yml:/etc/prometheus/prometheus.yml"
+    networks:
+     - hello-world_network
+    ports:
+     - "9090:9090"
+networks:
+  hello-world_network:
+    name: hello-world_network
+    driver: bridge
