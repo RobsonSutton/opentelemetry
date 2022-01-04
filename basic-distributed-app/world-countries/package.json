@@ -1,0 +1,20 @@
+{
+  "name": "world-countries-nodejs",
+  "version": "1.0.0",
+  "description": "Basic World Countries Application",
+  "main": "world-countries.js",
+  "scripts": {
+    "start": "node world-countries.js",
+    "zipkin-tracing": "node -r ./tracing/zipkin-tracing.js world-countries.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@opentelemetry/auto-instrumentations-node": "^0.27.1",
+    "@opentelemetry/exporter-prometheus": "^0.27.0",
+    "@opentelemetry/exporter-zipkin": "^1.0.1",
+    "@opentelemetry/sdk-node": "^0.27.0",
+    "express": "^4.17.2"
+  }
+}
