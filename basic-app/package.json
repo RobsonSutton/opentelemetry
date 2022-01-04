@@ -1,0 +1,23 @@
+{
+  "name": "hello-world-nodejs",
+  "version": "1.0.0",
+  "description": "Basic Hello World Application",
+  "main": "hello-world.js",
+  "scripts": {
+    "start": "node hello-world.js",
+    "console-tracing": "node -r ./tracing/console-tracing.js hello-world.js",
+    "zipkin-tracing": "node -r ./tracing/zipkin-tracing.js hello-world.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@opentelemetry/auto-instrumentations-node": "^0.27.0",
+    "@opentelemetry/exporter-prometheus": "^0.27.0",
+    "@opentelemetry/exporter-zipkin": "^1.0.1",
+    "@opentelemetry/sdk-node": "^0.27.0",
+    "axios": "^0.24.0",
+    "express": "^4.17.2",
+    "node-fetch": "^2.6.6"
+  }
+}
