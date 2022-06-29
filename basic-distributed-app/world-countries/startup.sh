@@ -1,1 +1,1 @@
-npm run zipkin-tracing
+npm run otlp-tracing

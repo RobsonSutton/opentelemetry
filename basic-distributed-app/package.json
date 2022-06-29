@@ -7,6 +7,7 @@
     "start": "node hello-world.js",
     "console-tracing": "node -r ./tracing/console-tracing.js hello-world.js",
     "zipkin-tracing": "node -r ./tracing/zipkin-tracing.js hello-world.js",
+    "otlp-tracing": "node -r ./tracing/otlp-tracing.js hello-world.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
@@ -14,6 +15,7 @@
   "dependencies": {
     "@opentelemetry/auto-instrumentations-node": "^0.27.0",
     "@opentelemetry/exporter-prometheus": "^0.27.0",
+    "@opentelemetry/exporter-trace-otlp-http": "^0.29.2",
     "@opentelemetry/exporter-zipkin": "^1.0.1",
     "@opentelemetry/sdk-node": "^0.27.0",
     "axios": "^0.24.0",
