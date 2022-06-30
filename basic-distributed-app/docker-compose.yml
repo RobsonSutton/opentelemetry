@@ -1,6 +1,7 @@
 version: "3.9"
 services:
   hello-world:
+    build: .
     image: hello-world
     container_name: hello-world
     networks:
@@ -11,6 +12,7 @@ services:
     depends_on:
       - world-countries
   world-countries:
+    build: ./world-countries
     image: world-countries
     container_name: world-countries
     networks:
@@ -44,6 +46,8 @@ services:
     ports:
      - "4318:4318" # HTTP
      - "4317:4317" # gRPC
+    depends_on:
+      - apm-server
   apm-server:
     image: elastic/apm-server:7.17.3
     container_name: apm-server
@@ -85,7 +89,12 @@ services:
     ports:
      - "9200:9200"
      - "9300:9300"
+    volumes:
+      - esdata1:/usr/share/elasticsearch/data:rw
 networks:
   hello-world_network:
     name: hello-world_network
     driver: bridge
+volumes:
+  esdata1:
+    driver: local
