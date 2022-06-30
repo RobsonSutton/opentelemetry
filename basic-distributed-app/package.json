@@ -14,8 +14,9 @@
   "license": "ISC",
   "dependencies": {
     "@opentelemetry/auto-instrumentations-node": "^0.27.0",
+    "@opentelemetry/exporter-metrics-otlp-proto": "^0.29.2",
     "@opentelemetry/exporter-prometheus": "^0.27.0",
-    "@opentelemetry/exporter-trace-otlp-http": "^0.29.2",
+    "@opentelemetry/exporter-trace-otlp-proto": "^0.29.2",
     "@opentelemetry/exporter-zipkin": "^1.0.1",
     "@opentelemetry/sdk-node": "^0.27.0",
     "axios": "^0.24.0",

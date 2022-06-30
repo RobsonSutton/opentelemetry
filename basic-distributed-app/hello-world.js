@@ -6,8 +6,12 @@ const axios = require("axios")
 const app = express()
 
 // metrics collection - Prometheus --------------
- const { countAllRequests } = require("./metrics/prometheus-metrics")
- app.use(countAllRequests())
+// const { countAllRequests } = require("./metrics/prometheus-metrics")
+// app.use(countAllRequests())
+
+// metrics collection - OTLP --------------
+// const { countAllRequests } = require("./metrics/otlp-metrics")
+// app.use(countAllRequests())
 
 // set endpoint port
 const PORT = process.env.PORT || "8080"

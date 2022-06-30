@@ -33,11 +33,20 @@ services:
      - hello-world_network
     ports:
      - "9090:9090"
+  otel-collector:
+    image: otel/opentelemetry-collector:0.54.0
+    container_name: otel-collector
+    command: ["--config=/etc/otel-collector-config.yml"]
+    networks:
+     - hello-world_network
+    volumes:
+      - ./config/otel-collector-config.yml:/etc/otel-collector-config.yml
+    ports:
+     - "4318:4318" # HTTP
+     - "4317:4317" # gRPC
   apm-server:
     image: elastic/apm-server:7.17.3
     container_name: apm-server
-    environment:
-      - logging.level=debug
     networks:
      - hello-world_network
     ports:
