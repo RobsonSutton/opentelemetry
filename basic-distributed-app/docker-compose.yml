@@ -90,11 +90,12 @@ services:
      - "9200:9200"
      - "9300:9300"
     volumes:
-      - esdata1:/usr/share/elasticsearch/data:rw
+      - hello-world_esdata1:/usr/share/elasticsearch/data:rw
 networks:
   hello-world_network:
     name: hello-world_network
     driver: bridge
 volumes:
-  esdata1:
+  hello-world_esdata1:
+    name: hello-world_esdata1
     driver: local
