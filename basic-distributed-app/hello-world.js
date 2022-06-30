@@ -19,8 +19,8 @@ const PORT = process.env.PORT || "8080"
 // home route
 app.get('/', (req,res) => {
     axios
-        .get(`http://localhost:${PORT}/middle-tier`)
-        .then(() => axios.get(`http://localhost:${PORT}/middle-tier`))
+        .get(`http://hello-world:${PORT}/middle-tier`)
+        .then(() => axios.get(`http://hello-world:${PORT}/middle-tier`))
         .then(result => {
             res.send(result.data)
         })
@@ -33,8 +33,8 @@ app.get('/', (req,res) => {
 // middle-tier route
 app.get('/middle-tier', (req,res) => {
     axios
-        .get(`http://localhost:${PORT}/backend`)
-        .then(() => axios.get(`http://localhost:${PORT}/backend`))
+        .get(`http://hello-world:${PORT}/backend`)
+        .then(() => axios.get(`http://hello-world:${PORT}/backend`))
         .then(result => {
             res.send(result.data)
         })
