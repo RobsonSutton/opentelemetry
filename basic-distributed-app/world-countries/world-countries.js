@@ -1,6 +1,10 @@
 const express = require("express")
 const app = express()
 
+// metrics collection - OTLP --------------
+// const { countAllRequests } = require("./metrics/otlp-metrics")
+// app.use(countAllRequests())
+
 // set endpoint port
 const PORT = process.env.PORT || "3000"
 

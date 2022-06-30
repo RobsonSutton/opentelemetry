@@ -1,24 +1,24 @@
 const process = require('process')
 const opentelemetry = require('@opentelemetry/sdk-node')
 const { getNodeAutoInstrumentations } = require('@opentelemetry/auto-instrumentations-node')
-const { OTLPTraceExporter } = require('@opentelemetry/exporter-trace-otlp-http');
+const { OTLPTraceExporter } = require('@opentelemetry/exporter-trace-otlp-proto')
 const { Resource } = require('@opentelemetry/resources')
 const { SemanticResourceAttributes } = require('@opentelemetry/semantic-conventions')
 
 const traceExporter = new OTLPTraceExporter({
-    url: 'http://apm-server:8200',
-
-    // optional - collection of custom headers to be sent with each request, empty by default
-    headers: {}, 
+  url: 'http://otel-collector:4318/v1/traces',
+  headers: {
+    'Content-Type': 'application/x-protobuf'
+  }
 })
 
 const sdk = new opentelemetry.NodeSDK({
   resource: new Resource({
-    [SemanticResourceAttributes.SERVICE_NAME]: "hello-world",
+    [SemanticResourceAttributes.SERVICE_NAME]: "world-countries",
     [SemanticResourceAttributes.SERVICE_VERSION]: "1.1",
     [SemanticResourceAttributes.DEPLOYMENT_ENVIRONMENT]: "development"
   }),
-  traceExporter,
+  traceExporter: traceExporter,
   instrumentations: [getNodeAutoInstrumentations()]
 })
 
